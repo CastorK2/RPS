@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock paper scissors</title>
+</head>
+<body>
+
+    <script>
+    
+    function getComputerChoice(){
+
+        
+        let randomNumber = Math.floor(Math.random() * 3);
+        
+        if(randomNumber == 0){
+            return "ROCK";
+        }else if(randomNumber == 1){
+            return "PAPER";
+        }else{
+            return "SCISSORS";
+        }
+
+    }
+
+    function getPlayerChoice(){
+
+        return playerChoice = prompt("Input ROCK, PAPER, or SCISSORS!").toUpperCase();
+
+    }
+
+
+    var humanRounds = 0;
+    var computerRounds = 0;
+
+    function playRound(computerChoice, playerChoice){
+ 
+       
+        if(computerChoice == "ROCK"){
+
+            if(playerChoice == "PAPER"){
+
+                console.log("You won! Computer chose ROCK!");
+                humanRounds++;
+
+            }else if(playerChoice == "SCISSORS"){
+
+                console.log("You lost! Computer chose ROCK!");
+                computerRounds++;
+
+            }else{
+
+                console.log("TIE! Computer chose ROCK as well!");
+
+            }
+
+        }else if(computerChoice == "PAPER"){
+
+            if(playerChoice == "ROCK"){
+
+                console.log("You lost! Computer chose PAPER!");
+                computerRounds++;
+
+            }else if(playerChoice == "SCISSORS"){
+
+                console.log("You won! Computer chose PAPER!");
+                humanRounds++;
+
+            }else{
+
+                console.log("TIE! Computer chose PAPER as well!");
+
+            }
+
+        }else{
+
+            if(playerChoice == "ROCK"){
+
+                console.log("You won! Computer chose SCISSORS!");
+                humanRounds++;
+
+            }else if(playerChoice == "SCISSORS"){
+
+                console.log("TIE! Computer chose SCISSORS as well!");
+                
+            }else{
+
+                console.log("You lost! Computer chose SCISSORS!");
+                computerRounds++;
+
+            }   
+
+
+        }
+
+
+    }
+
+    
+    function playGame(){
+
+        for(let i = 0; i < 5; i++){
+
+            let computerChoice = getComputerChoice();
+            let playerChoice = getPlayerChoice();
+
+            playRound(computerChoice, playerChoice);
+
+
+        }
+
+        console.log(`Final score: ${humanRounds} - ${computerRounds}`);
+    }
+
+    playGame();
+
+
+    </script>
+    
+</body>
+</html>
