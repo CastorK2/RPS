@@ -7,6 +7,12 @@
 </head>
 <body>
 
+    <button id = "rock">Rock</button>
+    <button id = "paper">Paper</button>
+    <button id = "scissors">Scissor</button>
+
+    <div id = "results"></div>
+
     <script>
     
     function getComputerChoice(){
@@ -34,24 +40,65 @@
     var humanRounds = 0;
     var computerRounds = 0;
 
+    const results = document.querySelector("#results");
+
+    let score = document.createElement("h1");
+    score.textContent = `Current Score: ${humanRounds} - ${computerRounds} `;
+
+    results.appendChild(score);
+
     function playRound(computerChoice, playerChoice){
+
+        let par = document.createElement("p");
+
+        if(humanRounds >= 5){
+
+            par.textContent = "Human won!";
+
+            results.appendChild(par);
+
+            return;
+
+        }else if(computerRounds >= 5){
+
+            par.textContent = "Computer won!";
+
+            results.appendChild(par);
+
+            return;
+        }
  
        
         if(computerChoice == "ROCK"){
 
             if(playerChoice == "PAPER"){
+ 
+                par.textContent = "You won! Computer chose ROCK!";
 
-                console.log("You won! Computer chose ROCK!");
+                results.appendChild(par);
+
                 humanRounds++;
+                score.textContent = `Current Score: ${humanRounds} - ${computerRounds}`;
+
 
             }else if(playerChoice == "SCISSORS"){
+                
+                par.textContent = "You lost! Computer chose ROCK!";
+                
+                results.appendChild(par);
 
-                console.log("You lost! Computer chose ROCK!");
                 computerRounds++;
+                score.textContent = `Current Score: ${humanRounds} - ${computerRounds}`;
 
             }else{
 
-                console.log("TIE! Computer chose ROCK as well!");
+                
+                par.textContent = "TIE! Computer chose ROCK as well!";
+                
+                results.appendChild(par);
+
+                score.textContent = `Current Score: ${humanRounds} - ${computerRounds}`;
+
 
             }
 
@@ -59,35 +106,63 @@
 
             if(playerChoice == "ROCK"){
 
-                console.log("You lost! Computer chose PAPER!");
+                par.textContent = "You lost! Computer chose PAPER!";
+                
+                results.appendChild(par);
+
                 computerRounds++;
+                score.textContent = `Current Score: ${humanRounds} - ${computerRounds}`;
+
 
             }else if(playerChoice == "SCISSORS"){
 
-                console.log("You won! Computer chose PAPER!");
+                par.textContent = "You won! Computer chose PAPER!";
+
+                results.appendChild(par);
+
                 humanRounds++;
+                score.textContent = `Current Score: ${humanRounds} - ${computerRounds}`;
+
 
             }else{
 
-                console.log("TIE! Computer chose PAPER as well!");
+                par.textContent = "TIE! Computer chose PAPER as well!";
+                
+                results.appendChild(par);
+
+                score.textContent = `Current Score: ${humanRounds} - ${computerRounds}`;
 
             }
 
         }else{
 
             if(playerChoice == "ROCK"){
+   
+                par.textContent = "You won! Computer chose SCISSORS!";
 
-                console.log("You won! Computer chose SCISSORS!");
+                results.appendChild(par);
+
                 humanRounds++;
+                score.textContent = `Current Score: ${humanRounds} - ${computerRounds}`;
 
             }else if(playerChoice == "SCISSORS"){
 
-                console.log("TIE! Computer chose SCISSORS as well!");
+                par.textContent = "TIE! Computer chose SCISSORS as well!";
+                
+                results.appendChild(par);
+
+                score.textContent = `Current Score: ${humanRounds} - ${computerRounds}`;
                 
             }else{
 
-                console.log("You lost! Computer chose SCISSORS!");
+            
+                par.textContent = "You lost! Computer chose SCISSORS!";
+                
+                results.appendChild(par);
+
                 computerRounds++;
+                score.textContent = `Current Score: ${humanRounds} - ${computerRounds}`;
+
 
             }   
 
@@ -98,22 +173,27 @@
     }
 
     
-    function playGame(){
+    const rockBtn = document.querySelector("#rock");
+    const paperBtn = document.querySelector("#paper");
+    const scissorsBtn = document.querySelector("#scissors");
 
-        for(let i = 0; i < 5; i++){
+    rockBtn.addEventListener("click", () => {
 
-            let computerChoice = getComputerChoice();
-            let playerChoice = getPlayerChoice();
+        playRound(getComputerChoice(), "ROCK")
 
-            playRound(computerChoice, playerChoice);
+    });
 
+    paperBtn.addEventListener("click", () =>{
 
-        }
+        playRound(getComputerChoice(), "PAPER");
 
-        console.log(`Final score: ${humanRounds} - ${computerRounds}`);
-    }
+    });
+    
+    scissorsBtn.addEventListener("click", () =>{
 
-    playGame();
+        playRound(getComputerChoice(), "SCISSORS");
+
+    });   
 
 
     </script>
