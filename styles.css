@@ -1,0 +1,36 @@
+*{
+
+    padding: 0;
+    margin: 0;
+
+}
+
+.boxContainer{
+
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-size: 40px;
+    text-align: center;
+
+    height: 500px;
+    width: 1850px;
+
+}
+
+#p1{
+
+    background-color: blue;
+    padding: 20px;
+    border: 20px solid #9B51E0; 
+
+}
+
+#p2{
+
+    background-color: red;
+    padding: 20px;
+    border: 20px solid #27AE60;
+
+
+}
